@@ -15,10 +15,8 @@ namespace PersistenceService.Configurations
 
         public static IServiceCollection InjectPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddDbContext<BASDBContext>(options =>
-            //options.UseSqlServer(configuration.GetConnectionString("DatabaseConfig:AiutIndia:BASDbConnectionString")));
             services.AddDbContext<BookKaroDBContext>(options =>
-            options.UseSqlServer(configuration["DatabaseConfig:AiutIndia:HRADbConnectionString"]));
+            options.UseSqlServer(configuration["DatabaseConfig:xyz:abc"]));
 
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IGenderRepository, GenderRepository>();
