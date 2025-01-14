@@ -1,0 +1,39 @@
+﻿using Bussiness.Contracts.Repositories.Common;
+using Bussiness.Contracts;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Bussiness.Contracts.Repositories;
+using PersistenceService.Repositories;
+using PersistenceService.Repositories.Common;
+
+namespace PersistenceService.Configurations
+{
+    public static class ConfigureServices
+    {
+        #region Methods
+
+        public static IServiceCollection InjectPersistenceServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            //services.AddDbContext<BASDBContext>(options =>
+            //options.UseSqlServer(configuration.GetConnectionString("DatabaseConfig:AiutIndia:BASDbConnectionString")));
+            services.AddDbContext<BookKaroDBContext>(options =>
+            options.UseSqlServer(configuration["DatabaseConfig:AiutIndia:HRADbConnectionString"]));
+
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IGenderRepository, GenderRepository>();
+            services.AddScoped<IDataTypeRepository, DataTypeRepository>();
+            services.AddScoped<IEnumTypeRepository, EnumTypeRepository>();
+            services.AddScoped<IEnumValueRepository, EnumValueRepository>();
+            services.AddScoped<IIndustryRepository, IndustryRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            return services;
+        }
+
+        #endregion
+    }
+}
