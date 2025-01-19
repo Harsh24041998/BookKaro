@@ -24,6 +24,7 @@ namespace PersistenceService.Configurations
         public DbSet<EnumValueDO> EnumValues { get; set; }
         public DbSet<IndustryDO> Industries { get; set; }
         public DbSet<CategoryDO> Categories { get; set; }
+        public DbSet<OrganizationDO> Organizations { get; set; }
         public DbSet<UserDO> Users { get; set; }
 
         #endregion
@@ -53,6 +54,7 @@ namespace PersistenceService.Configurations
             modelBuilder.Entity<IndustryDO>().ToTable("RefIndustry");
             modelBuilder.Entity<EnumValueDO>().ToTable("RefEnumValue");
             modelBuilder.Entity<CategoryDO>().ToTable("RefCategory");
+            modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization");
             modelBuilder.Entity<UserDO>().ToTable("RefUser");
         }
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken)

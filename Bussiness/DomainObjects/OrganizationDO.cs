@@ -2,7 +2,7 @@
 
 namespace Bussiness.DomainObjects
 {
-    public class IndustryDO
+    public sealed class OrganizationDO
         : AuditableDO
     {
         #region Properties
@@ -10,16 +10,14 @@ namespace Bussiness.DomainObjects
         #region Column Properties
 
         public string Name { get; set; } = string.Empty;
-        public string Code { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
+        public Guid IndustryId { get; set; } = default;
+        public bool IsMobile { get; set; } = default;
         public bool IsActive { get; set; } = default;
 
         #endregion
 
         #region Navigation Properties
-
-        public ICollection<OrganizationDO>? Organizations { get; }
-        public ICollection<CategoryDO>? Categories { get; }
+        public IndustryDO Industry { get; set; } = default!;
 
         #endregion
 

@@ -65,6 +65,10 @@ namespace PersistenceService.Configurations.Entities
                 .HasMany(e => e.Categories)
                 .WithOne(e => e.Industry);
 
+            builder
+                .HasMany(e => e.Organizations)
+                .WithOne(e => e.Industry);
+
 
         }
 

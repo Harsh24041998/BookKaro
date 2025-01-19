@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PersistenceService.Configurations.Entities
 {
-    public class CategoryConfiguration
-        : IEntityTypeConfiguration<CategoryDO>
+    public class OrganizationConfiguration
+        : IEntityTypeConfiguration<OrganizationDO>
     {
         #region Methods
 
-        public void Configure(EntityTypeBuilder<CategoryDO> builder)
+        public void Configure(EntityTypeBuilder<OrganizationDO> builder)
         {
             // Configure table name
             builder
-                .ToTable("RefCategory");
+                .ToTable("RefOrganization");
 
             //Configure column(s)
             builder
@@ -29,40 +29,36 @@ namespace PersistenceService.Configurations.Entities
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnOrder(3);
             builder
-                .Property(e => e.Description)
-                .HasColumnType("VARCHAR(100)")
-                .HasColumnOrder(4);
-            builder
-                .Property(e => e.Code)
-                .HasColumnType("VARCHAR(50)")
-                .HasColumnOrder(5);
+              .Property(e => e.IsMobile)
+              .HasColumnType("BIT")
+              .HasColumnOrder(4);
             builder
                 .Property(e => e.CreatedBy)
                 .HasColumnType("VARCHAR(50)")
-                .HasColumnOrder(6);
+                .HasColumnOrder(5);
             builder
                 .Property(e => e.CreatedOn)
                 .HasColumnType("DATETIME")
-                .HasColumnOrder(7);
+                .HasColumnOrder(6);
             builder
                 .Property(e => e.UpdatedBy)
                 .HasColumnType("VARCHAR(50)")
                 .IsRequired(false)
-                .HasColumnOrder(8);
+                .HasColumnOrder(7);
             builder
                 .Property(e => e.UpdatedOn)
                 .HasColumnType("DATETIME")
                 .IsRequired(false)
-                .HasColumnOrder(9);
+                .HasColumnOrder(8);
             builder
               .Property(e => e.IsActive)
               .HasColumnType("BIT")
-              .HasColumnOrder(10);
+              .HasColumnOrder(9);
 
             //Configure primary key
             builder
                 .HasKey(e => e.Id)
-                .HasName("PK_RefCategory_Id");
+                .HasName("PK_RefOrganization_Id");
 
             //Configure index(s)
 
@@ -70,9 +66,9 @@ namespace PersistenceService.Configurations.Entities
 
             builder
                 .HasOne(e => e.Industry)
-                .WithMany(e => e.Categories)
+                .WithMany(e => e.Organizations)
                 .HasForeignKey(e => e.IndustryId)
-                .HasConstraintName("FK_RefIndustries_RefCategory_Id")
+                .HasConstraintName("FK_RefIndustries_RefOrganization_Id")
                 .OnDelete(DeleteBehavior.NoAction);
         }
 

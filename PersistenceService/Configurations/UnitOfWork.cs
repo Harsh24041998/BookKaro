@@ -16,6 +16,7 @@ namespace PersistenceService.Configurations
         private IEnumTypeRepository? _enumTypeRepository;
         private IEnumValueRepository? _enumValueRepository;
         private ICategoryRepository? _categoryRepository;
+        private IOrganizationRepository? _organizationRepository;
         private IIndustryRepository? _industryRepository;
         private IUserRepository? _userRepository;
         #endregion
@@ -86,6 +87,17 @@ namespace PersistenceService.Configurations
                     _categoryRepository = new CategoryRepository(_bookKaroDBContext, true) as ICategoryRepository;
                 }
                 return _categoryRepository!;
+            }
+        }
+        public IOrganizationRepository OrganizationRepository
+        {
+            get
+            {
+                if (_organizationRepository == null)
+                {
+                    _organizationRepository = new OrganizationRepository(_bookKaroDBContext, true) as IOrganizationRepository;
+                }
+                return _organizationRepository!;
             }
         }
         public IIndustryRepository IndustryRepository
