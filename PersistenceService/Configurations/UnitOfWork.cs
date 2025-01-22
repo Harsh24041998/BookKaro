@@ -16,6 +16,7 @@ namespace PersistenceService.Configurations
         private IEnumTypeRepository? _enumTypeRepository;
         private IEnumValueRepository? _enumValueRepository;
         private ICategoryRepository? _categoryRepository;
+        private ICoreAssetRepository? _coreAssetRepository;
         private IOrganizationRepository? _organizationRepository;
         private IIndustryRepository? _industryRepository;
         private IUserRepository? _userRepository;
@@ -87,6 +88,17 @@ namespace PersistenceService.Configurations
                     _categoryRepository = new CategoryRepository(_bookKaroDBContext, true) as ICategoryRepository;
                 }
                 return _categoryRepository!;
+            }
+        }
+        public ICoreAssetRepository CoreAssetRepository
+        {
+            get
+            {
+                if (_coreAssetRepository == null)
+                {
+                    _coreAssetRepository = new CoreAssetRepository(_bookKaroDBContext, true) as ICoreAssetRepository;
+                }
+                return _coreAssetRepository!;
             }
         }
         public IOrganizationRepository OrganizationRepository

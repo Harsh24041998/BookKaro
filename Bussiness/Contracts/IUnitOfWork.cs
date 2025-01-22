@@ -14,6 +14,7 @@ namespace Bussiness.Contracts
         IUserRepository UserRepository { get; }
         IIndustryRepository IndustryRepository { get; }
         IOrganizationRepository OrganizationRepository { get; }
+        ICoreAssetRepository CoreAssetRepository { get; }
 
         #endregion
 

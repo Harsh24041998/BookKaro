@@ -74,6 +74,10 @@ namespace PersistenceService.Configurations.Entities
                 .HasForeignKey(e => e.IndustryId)
                 .HasConstraintName("FK_RefIndustries_RefCategory_Id")
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder
+                .HasMany(e => e.CoreAssets)
+                .WithOne(e => e.Category);
         }
 
         #endregion
