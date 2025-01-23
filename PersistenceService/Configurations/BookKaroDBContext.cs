@@ -26,6 +26,7 @@ namespace PersistenceService.Configurations
         public DbSet<CategoryDO> Categories { get; set; }
         public DbSet<CoreAssetDO> CoreAssets { get; set; }
         public DbSet<OrganizationDO> Organizations { get; set; }
+        public DbSet<SubscriptionDO> Subscriptions { get; set; }
         public DbSet<UserDO> Users { get; set; }
 
         #endregion
@@ -58,6 +59,7 @@ namespace PersistenceService.Configurations
             modelBuilder.Entity<CoreAssetDO>().ToTable("CoreAsset");
             modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization");
             modelBuilder.Entity<UserDO>().ToTable("RefUser");
+            modelBuilder.Entity<SubscriptionDO>().ToTable("RefSubscription");
         }
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {

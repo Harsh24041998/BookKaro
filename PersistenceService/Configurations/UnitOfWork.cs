@@ -20,6 +20,7 @@ namespace PersistenceService.Configurations
         private IOrganizationRepository? _organizationRepository;
         private IIndustryRepository? _industryRepository;
         private IUserRepository? _userRepository;
+        private ISubscriptionRepository? _subscriptionRepository;
         #endregion
 
         #region Properties
@@ -132,6 +133,17 @@ namespace PersistenceService.Configurations
                     _userRepository = new UserRepository(_bookKaroDBContext, true) as IUserRepository;
                 }
                 return _userRepository!;
+            }
+        }
+        public ISubscriptionRepository SubscriptionRepository
+        {
+            get
+            {
+                if (_subscriptionRepository == null)
+                {
+                    _subscriptionRepository = new SubscriptionRepository(_bookKaroDBContext, true) as ISubscriptionRepository;
+                }
+                return _subscriptionRepository!;
             }
         }
 
