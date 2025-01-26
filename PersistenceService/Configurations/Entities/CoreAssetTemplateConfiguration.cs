@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PersistenceService.Configurations.Entities
 {
-    public class CoreAssetConfiguration
-        : IEntityTypeConfiguration<CoreAssetDO>
+    public class CoreAssetTemplateConfiguration
+        : IEntityTypeConfiguration<CoreAssetTemplateDO>
     {
         #region Methods
 
-        public void Configure(EntityTypeBuilder<CoreAssetDO> builder)
+        public void Configure(EntityTypeBuilder<CoreAssetTemplateDO> builder)
         {
             // Configure table name
             builder
-                .ToTable("RefCoreAsset");
+                .ToTable("RefCoreAssetTemplate");
 
             //Configure column(s)
             builder
@@ -21,82 +21,67 @@ namespace PersistenceService.Configurations.Entities
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(1);
             builder
-                .Property(e => e.OrganizationID)
+                .Property(e => e.AssetId)
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(2);
             builder
-                .Property(e => e.CategoryID)
+                .Property(e => e.DayEnumValueId)
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(3);
             builder
-                .Property(e => e.Name)
-                .HasColumnType("VARCHAR(50)")
+                .Property(e => e.StartTime)
+                .HasColumnType("TIME")
                 .HasColumnOrder(4);
             builder
-                .Property(e => e.AssetNo)
-                .HasColumnType("INT")
+                .Property(e => e.EndTime)
+                .HasColumnType("TIME")
                 .HasColumnOrder(5);
             builder
-                .Property(e => e.Priority)
+                .Property(e => e.Rate)
                 .HasColumnType("INT")
                 .HasColumnOrder(6);
             builder
-                .Property(e => e.SlotInterval)
-                .HasColumnType("INT")
-                .HasColumnOrder(7);
-            builder
-              .Property(e => e.IsOnline)
-              .HasColumnType("BIT")
-              .HasColumnOrder(8);
-            builder
                 .Property(e => e.CreatedBy)
                 .HasColumnType("VARCHAR(50)")
-                .HasColumnOrder(9);
+                .HasColumnOrder(7);
             builder
                 .Property(e => e.CreatedOn)
                 .HasColumnType("DATETIME")
-                .HasColumnOrder(10);
+                .HasColumnOrder(8);
             builder
                 .Property(e => e.UpdatedBy)
                 .HasColumnType("VARCHAR(50)")
                 .IsRequired(false)
-                .HasColumnOrder(11);
+                .HasColumnOrder(9);
             builder
                 .Property(e => e.UpdatedOn)
                 .HasColumnType("DATETIME")
                 .IsRequired(false)
-                .HasColumnOrder(12);
-            builder
-              .Property(e => e.IsActive)
-              .HasColumnType("BIT")
-              .HasColumnOrder(13);
+                .HasColumnOrder(10);
 
             //Configure primary key
             builder
                 .HasKey(e => e.Id)
-                .HasName("PK_RefCoreAsset_Id");
+                .HasName("PK_RefCoreAssetTemplate_Id");
 
             //Configure index(s)
 
             //Configure foreign key(s) and relations
 
             builder
-                .HasOne(e => e.Organization)
-                .WithMany(e => e.CoreAssets)
-                .HasForeignKey(e => e.OrganizationID)
-                .HasConstraintName("FK_RefOrganization_RefCoreAsset_Id")
+                .HasOne(e => e.CoreAsset)
+                .WithMany(e => e.CoreAssetTemplates)
+                .HasForeignKey(e => e.AssetId)
+                .HasConstraintName("FK_RefCoreAsset_RefCoreAssetTemplate_Id")
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder
-                .HasOne(e => e.Category)
-                .WithMany(e => e.CoreAssets)
-                .HasForeignKey(e => e.CategoryID)
-                .HasConstraintName("FK_RefCategory_RefCoreAsset_Id")
+                .HasOne(e => e.EnumValue)
+                .WithMany(e => e.CoreAssetTemplates)
+                .HasForeignKey(e => e.DayEnumValueId)
+                .HasConstraintName("FK_RefEnumValue_RefCoreAssetTemplate_Id")
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder
-                .HasMany(e => e.CoreAssetTemplates)
-                .WithOne(e => e.CoreAsset);
         }
 
         #endregion

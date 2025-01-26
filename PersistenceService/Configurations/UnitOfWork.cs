@@ -21,6 +21,8 @@ namespace PersistenceService.Configurations
         private IIndustryRepository? _industryRepository;
         private IUserRepository? _userRepository;
         private ISubscriptionRepository? _subscriptionRepository;
+        private ICoreAssetTemplateRepository? _coreAssetTemplateRepository;
+        private ICoreAssetCustomTemplateRepository? _coreAssetCustomTemplateRepository;
         #endregion
 
         #region Properties
@@ -144,6 +146,17 @@ namespace PersistenceService.Configurations
                     _subscriptionRepository = new SubscriptionRepository(_bookKaroDBContext, true) as ISubscriptionRepository;
                 }
                 return _subscriptionRepository!;
+            }
+        }
+        public ICoreAssetTemplateRepository CoreAssetTemplateRepository
+        {
+            get
+            {
+                if (_coreAssetTemplateRepository == null)
+                {
+                    _coreAssetTemplateRepository = new CoreAssetTemplateRepository(_bookKaroDBContext, true) as ICoreAssetTemplateRepository;
+                }
+                return _coreAssetTemplateRepository!;
             }
         }
 

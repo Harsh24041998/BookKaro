@@ -24,6 +24,7 @@ namespace Bussiness.DomainObjects
         #region Navigation Properties
 
         public EnumTypeDO EnumType { get; set; } = default!;
+        public ICollection<CoreAssetTemplateDO>? CoreAssetTemplates { get; }
 
         #endregion
 

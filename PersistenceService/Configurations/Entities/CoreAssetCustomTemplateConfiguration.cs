@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PersistenceService.Configurations.Entities
 {
-    public sealed class EnumValueConfiguration
-        : IEntityTypeConfiguration<EnumValueDO>
+    public class CoreAssetCustomTemplateConfiguration
+        : IEntityTypeConfiguration<CoreAssetCustomTemplateDO>
     {
         #region Methods
 
-        public void Configure(EntityTypeBuilder<EnumValueDO> builder)
+        public void Configure(EntityTypeBuilder<CoreAssetCustomTemplateDO> builder)
         {
             // Configure table name
             builder
-                .ToTable("RefEnumValue");
+                .ToTable("RefCoreAssetCustomTemplate");
 
             //Configure column(s)
             builder
@@ -21,63 +21,61 @@ namespace PersistenceService.Configurations.Entities
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(1);
             builder
-                .Property(e => e.EnumTypeId)
+                .Property(e => e.AssetId)
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(2);
             builder
-                .Property(e => e.Name)
-                .HasColumnType("VARCHAR(50)")
+                .Property(e => e.Date)
+                .HasColumnType("DATETIME")
                 .HasColumnOrder(3);
             builder
-                .Property(e => e.Description)
-                .HasColumnType("VARCHAR(100)")
+                .Property(e => e.StartTime)
+                .HasColumnType("TIME")
                 .HasColumnOrder(4);
             builder
-                .Property(e => e.Code)
-                .HasColumnType("VARCHAR(50)")
+                .Property(e => e.EndTime)
+                .HasColumnType("TIME")
                 .HasColumnOrder(5);
+            builder
+                .Property(e => e.Rate)
+                .HasColumnType("INT")
+                .HasColumnOrder(6);
             builder
                 .Property(e => e.CreatedBy)
                 .HasColumnType("VARCHAR(50)")
-                .HasColumnOrder(6);
+                .HasColumnOrder(7);
             builder
                 .Property(e => e.CreatedOn)
                 .HasColumnType("DATETIME")
-                .HasColumnOrder(7);
+                .HasColumnOrder(8);
             builder
                 .Property(e => e.UpdatedBy)
                 .HasColumnType("VARCHAR(50)")
                 .IsRequired(false)
-                .HasColumnOrder(8);
+                .HasColumnOrder(9);
             builder
                 .Property(e => e.UpdatedOn)
                 .HasColumnType("DATETIME")
                 .IsRequired(false)
-                .HasColumnOrder(9);
-            builder
-              .Property(e => e.IsActive)
-              .HasColumnType("BIT")
-              .HasColumnOrder(10);
+                .HasColumnOrder(10);
 
             //Configure primary key
             builder
                 .HasKey(e => e.Id)
-                .HasName("PK_RefEnumValue_Id");
+                .HasName("PK_RefCoreAssetCustomTemplate_Id");
 
             //Configure index(s)
 
             //Configure foreign key(s) and relations
 
             builder
-            .HasOne(u => u.EnumType)                
-            .WithOne(g => g.EnumValue)                 
-            .HasForeignKey<EnumValueDO>(u => u.EnumTypeId) 
-            .HasConstraintName("FK_RefGender_RefUser_Id")  
-            .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(e => e.CoreAsset)
+                .WithMany(e => e.CoreAssetCustomTemplates)
+                .HasForeignKey(e => e.AssetId)
+                .HasConstraintName("FK_RefCoreAsset_RefCoreAssetCustomTemplate_Id")
+                .OnDelete(DeleteBehavior.NoAction);
 
-            builder
-                .HasMany(e => e.CoreAssetTemplates)
-                .WithOne(e => e.EnumValue);
+
         }
 
         #endregion

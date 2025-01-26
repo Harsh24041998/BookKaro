@@ -22,6 +22,8 @@ namespace Bussiness.DomainObjects
         #region Navigation Properties
 
         public CategoryDO Category { get; set; } = default!;
+        public ICollection<CoreAssetTemplateDO>? CoreAssetTemplates { get; }
+        public ICollection<CoreAssetCustomTemplateDO>? CoreAssetCustomTemplates { get; }
         public OrganizationDO Organization { get; set; } = default!;
 
         #endregion
