@@ -18,6 +18,9 @@ namespace Bussiness.DomainObjects
 
         #region Navigation Properties
         public IndustryDO Industry { get; set; } = default!;
+        public AddressDO Address { get; set; } = default!;
+        public ICollection<OrganizationRoleDO>? OrganizationRoles { get; }
+
 
         #endregion
 
