@@ -18,7 +18,6 @@ namespace Bussiness.DomainObjects
 
         #region Navigation Properties
         public IndustryDO Industry { get; set; } = default!;
-        public ICollection<CoreAssetDO>? CoreAssets { get; }
 
         #endregion
 

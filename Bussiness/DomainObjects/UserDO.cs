@@ -20,6 +20,7 @@ namespace Bussiness.DomainObjects
         #region Navigation Properties
 
         public GenderDO Gender { get; set; } = default!;
+        public ICollection<OrganizationRoleDO>? OrganizationRoles { get; }
 
         #endregion
 

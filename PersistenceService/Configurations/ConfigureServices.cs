@@ -25,10 +25,8 @@ namespace PersistenceService.Configurations
             services.AddScoped<IEnumValueRepository, EnumValueRepository>();
             services.AddScoped<IIndustryRepository, IndustryRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ICoreAssetRepository, CoreAssetRepository>();
-            services.AddScoped<ICoreAssetTemplateRepository, CoreAssetTemplateRepository>();
-            services.AddScoped<ICoreAssetCustomTemplateRepository, CoreAssetCustomTemplateRepository>();
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IOrganizationRoleRepository, OrganizationRoleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
