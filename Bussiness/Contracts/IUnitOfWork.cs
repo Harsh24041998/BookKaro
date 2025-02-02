@@ -18,6 +18,7 @@ namespace Bussiness.Contracts
         ISubscriptionRepository SubscriptionRepository { get; }
         ICoreAssetTemplateRepository CoreAssetTemplateRepository { get; }
         ICoreAssetCustomTemplateRepository CoreAssetCustomTemplateRepository { get; }
+        ICoreAssetCancellationPolicyRepository CoreAssetCancellationPolicyRepository { get; }
 
         #endregion
 

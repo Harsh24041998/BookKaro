@@ -2,7 +2,7 @@
 
 namespace Bussiness.DomainObjects
 {
-    public class CoreAssetCustomTemplateDO
+    public sealed class CoreAssetCustomTemplateDO
         : AuditableDO
     {
         #region Properties

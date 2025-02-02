@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bussiness.DomainObjects
 {
-    public class EnumValueDO
+    public sealed class EnumValueDO
         : AuditableDO
     {
         #region Properties

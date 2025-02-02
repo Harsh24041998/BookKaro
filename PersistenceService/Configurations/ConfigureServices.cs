@@ -28,6 +28,7 @@ namespace PersistenceService.Configurations
             services.AddScoped<ICoreAssetRepository, CoreAssetRepository>();
             services.AddScoped<ICoreAssetTemplateRepository, CoreAssetTemplateRepository>();
             services.AddScoped<ICoreAssetCustomTemplateRepository, CoreAssetCustomTemplateRepository>();
+            services.AddScoped<ICoreAssetCancellationPolicyRepository, CoreAssetCancellationPolicyRepository>();
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();

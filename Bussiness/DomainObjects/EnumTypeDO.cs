@@ -2,7 +2,7 @@
 
 namespace Bussiness.DomainObjects
 {
-    public class EnumTypeDO
+    public sealed class EnumTypeDO
         : AuditableDO
     {
         #region Properties

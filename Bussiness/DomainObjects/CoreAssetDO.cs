@@ -2,7 +2,7 @@
 
 namespace Bussiness.DomainObjects
 {
-    public class CoreAssetDO
+    public sealed class CoreAssetDO
         : AuditableDO
     {
         #region Properties
@@ -24,6 +24,7 @@ namespace Bussiness.DomainObjects
         public CategoryDO Category { get; set; } = default!;
         public ICollection<CoreAssetTemplateDO>? CoreAssetTemplates { get; }
         public ICollection<CoreAssetCustomTemplateDO>? CoreAssetCustomTemplates { get; }
+        public ICollection<CoreAssetCancellationPolicyDO>? CoreAssetCancellationPolicys { get; }
         public OrganizationDO Organization { get; set; } = default!;
 
         #endregion

@@ -23,6 +23,7 @@ namespace PersistenceService.Configurations
         private ISubscriptionRepository? _subscriptionRepository;
         private ICoreAssetTemplateRepository? _coreAssetTemplateRepository;
         private ICoreAssetCustomTemplateRepository? _coreAssetCustomTemplateRepository;
+        private ICoreAssetCancellationPolicyRepository? _coreAssetCancellationPolicyRepository;
         #endregion
 
         #region Properties
@@ -157,6 +158,32 @@ namespace PersistenceService.Configurations
                     _coreAssetTemplateRepository = new CoreAssetTemplateRepository(_bookKaroDBContext, true) as ICoreAssetTemplateRepository;
                 }
                 return _coreAssetTemplateRepository!;
+            }
+        }
+
+        public ICoreAssetCustomTemplateRepository CoreAssetCustomTemplateRepository
+        {
+            get
+            {
+                if (_coreAssetCustomTemplateRepository == null)
+                {
+                    _coreAssetCustomTemplateRepository = new CoreAssetCustomTemplateRepository(_bookKaroDBContext, true) as ICoreAssetCustomTemplateRepository;
+                }
+                return _coreAssetCustomTemplateRepository!;
+            }
+        }
+
+
+
+        public ICoreAssetCancellationPolicyRepository CoreAssetCancellationPolicyRepository
+        {
+            get
+            {
+                if (_coreAssetCancellationPolicyRepository == null)
+                {
+                    _coreAssetCancellationPolicyRepository = new CoreAssetCancellationPolicyRepository(_bookKaroDBContext, true) as ICoreAssetCancellationPolicyRepository;
+                }
+                return _coreAssetCancellationPolicyRepository!;
             }
         }
 

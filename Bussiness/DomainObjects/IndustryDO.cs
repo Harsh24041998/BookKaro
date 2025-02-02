@@ -2,7 +2,7 @@
 
 namespace Bussiness.DomainObjects
 {
-    public class IndustryDO
+    public sealed class IndustryDO
         : AuditableDO
     {
         #region Properties

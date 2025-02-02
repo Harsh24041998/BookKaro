@@ -2,7 +2,7 @@
 
 namespace Bussiness.DomainObjects
 {
-    public class CategoryDO
+    public sealed class CategoryDO
         : AuditableDO
     {
         #region Properties
