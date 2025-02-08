@@ -19,6 +19,7 @@ namespace PersistenceService.Configurations
             options.UseSqlServer(configuration["DatabaseConfig:xyz:abc"]));
 
             services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IGenderRepository, GenderRepository>();
             services.AddScoped<IDataTypeRepository, DataTypeRepository>();
             services.AddScoped<IEnumTypeRepository, EnumTypeRepository>();
@@ -30,6 +31,7 @@ namespace PersistenceService.Configurations
             services.AddScoped<ICoreAssetCustomTemplateRepository, CoreAssetCustomTemplateRepository>();
             services.AddScoped<ICoreAssetCancellationPolicyRepository, CoreAssetCancellationPolicyRepository>();
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IOrganizationRoleRepository, OrganizationRoleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));

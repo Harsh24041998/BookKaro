@@ -17,7 +17,7 @@ namespace Bussiness.DomainObjects
         #endregion
 
         #region Navigation Properties
-
+        public ICollection<OrganizationRoleDO>? OrganizationRoles { get; }
 
         #endregion
 

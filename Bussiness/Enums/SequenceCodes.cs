@@ -9,6 +9,9 @@
         Role,
         EnumType,
         Industry,
+        Organization,
+        Address,
+        OrganizationRole,
         EnumValue,
         Category
     }

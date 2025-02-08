@@ -18,7 +18,9 @@ namespace PersistenceService.Configurations
         private ICategoryRepository? _categoryRepository;
         private ICoreAssetRepository? _coreAssetRepository;
         private IOrganizationRepository? _organizationRepository;
+        private IOrganizationRoleRepository? _organizationRoleRepository;
         private IIndustryRepository? _industryRepository;
+        private IAddressRepository? _addressRepository;
         private IUserRepository? _userRepository;
         private ISubscriptionRepository? _subscriptionRepository;
         private ICoreAssetTemplateRepository? _coreAssetTemplateRepository;
@@ -114,6 +116,28 @@ namespace PersistenceService.Configurations
                     _organizationRepository = new OrganizationRepository(_bookKaroDBContext, true) as IOrganizationRepository;
                 }
                 return _organizationRepository!;
+            }
+        }
+        public IAddressRepository AddressRepository
+        {
+            get
+            {
+                if (_addressRepository == null)
+                {
+                    _addressRepository = new AddressRepository(_bookKaroDBContext, true) as IAddressRepository;
+                }
+                return _addressRepository!;
+            }
+        }
+        public IOrganizationRoleRepository OrganizationRoleRepository
+        {
+            get
+            {
+                if (_organizationRoleRepository == null)
+                {
+                    _organizationRoleRepository = new OrganizationRoleRepository(_bookKaroDBContext, true) as IOrganizationRoleRepository;
+                }
+                return _organizationRoleRepository!;
             }
         }
         public IIndustryRepository IndustryRepository

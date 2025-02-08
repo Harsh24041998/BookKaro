@@ -7,6 +7,8 @@ namespace Bussiness.Contracts
         #region Properties
         IRoleRepository RoleRepository { get; }
         IGenderRepository GenderRepository { get; }
+        IAddressRepository AddressRepository { get; }
+        IOrganizationRoleRepository OrganizationRoleRepository { get; }
         IDataTypeRepository DataTypeRepository { get; }
         IEnumTypeRepository EnumTypeRepository { get; }
         IEnumValueRepository EnumValueRepository { get; }
