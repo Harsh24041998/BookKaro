@@ -21,6 +21,8 @@ namespace Bussiness.Contracts
         ICoreAssetTemplateRepository CoreAssetTemplateRepository { get; }
         ICoreAssetCustomTemplateRepository CoreAssetCustomTemplateRepository { get; }
         ICoreAssetCancellationPolicyRepository CoreAssetCancellationPolicyRepository { get; }
+        ICoreAssetBookingRepository CoreAssetBookingRepository { get; }
+        ICoreAssetBookingSlotRepository CoreAssetBookingSlotRepository { get; }
 
         #endregion
 

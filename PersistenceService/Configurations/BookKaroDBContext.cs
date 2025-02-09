@@ -28,6 +28,8 @@ namespace PersistenceService.Configurations
         public DbSet<CoreAssetTemplateDO> CoreAssetTemplates { get; set; }
         public DbSet<CoreAssetCustomTemplateDO> CoreAssetCustomTemplates { get; set; }
         public DbSet<CoreAssetCancellationPolicyDO> CoreAssetCancellationPolicys { get; set; }
+        public DbSet<CoreAssetBookingDO> CoreAssetBookings { get; set; }
+        public DbSet<CoreAssetBookingSlotDO> CoreAssetBookingSlots { get; set; }
         public DbSet<OrganizationDO> Organizations { get; set; }
         public DbSet<UserDO> Users { get; set; }
 
@@ -63,6 +65,8 @@ namespace PersistenceService.Configurations
             modelBuilder.Entity<CoreAssetTemplateDO>().ToTable("CoreAssetTemplate");
             modelBuilder.Entity<CoreAssetCustomTemplateDO>().ToTable("CoreAssetCustomTemplate");
             modelBuilder.Entity<CoreAssetCancellationPolicyDO>().ToTable("CoreAssetCancellationPolicy");
+            modelBuilder.Entity<CoreAssetBookingDO>().ToTable("CoreAssetBooking");
+            modelBuilder.Entity<CoreAssetBookingSlotDO>().ToTable("CoreAssetBookingSlot");
             modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization");
             modelBuilder.Entity<OrganizationRoleDO>().ToTable("RefOrganizationRole");
             modelBuilder.Entity<UserDO>().ToTable("RefUser");

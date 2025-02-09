@@ -26,6 +26,8 @@ namespace PersistenceService.Configurations
         private ICoreAssetTemplateRepository? _coreAssetTemplateRepository;
         private ICoreAssetCustomTemplateRepository? _coreAssetCustomTemplateRepository;
         private ICoreAssetCancellationPolicyRepository? _coreAssetCancellationPolicyRepository;
+        private ICoreAssetBookingRepository? _coreAssetBookingRepository;
+        private ICoreAssetBookingSlotRepository? _coreAssetBookingSlotRepository;
         #endregion
 
         #region Properties
@@ -208,6 +210,30 @@ namespace PersistenceService.Configurations
                     _coreAssetCancellationPolicyRepository = new CoreAssetCancellationPolicyRepository(_bookKaroDBContext, true) as ICoreAssetCancellationPolicyRepository;
                 }
                 return _coreAssetCancellationPolicyRepository!;
+            }
+        }
+
+        public ICoreAssetBookingRepository CoreAssetBookingRepository
+        {
+            get
+            {
+                if (_coreAssetBookingRepository == null)
+                {
+                    _coreAssetBookingRepository = new CoreAssetBookingRepository(_bookKaroDBContext, true) as ICoreAssetBookingRepository;
+                }
+                return _coreAssetBookingRepository!;
+            }
+        }
+
+        public ICoreAssetBookingSlotRepository CoreAssetBookingSlotRepository
+        {
+            get
+            {
+                if (_coreAssetBookingSlotRepository == null)
+                {
+                    _coreAssetBookingSlotRepository = new CoreAssetBookingSlotRepository(_bookKaroDBContext, true) as ICoreAssetBookingSlotRepository;
+                }
+                return _coreAssetBookingSlotRepository!;
             }
         }
 

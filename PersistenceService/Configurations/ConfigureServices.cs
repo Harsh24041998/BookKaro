@@ -30,6 +30,8 @@ namespace PersistenceService.Configurations
             services.AddScoped<ICoreAssetTemplateRepository, CoreAssetTemplateRepository>();
             services.AddScoped<ICoreAssetCustomTemplateRepository, CoreAssetCustomTemplateRepository>();
             services.AddScoped<ICoreAssetCancellationPolicyRepository, CoreAssetCancellationPolicyRepository>();
+            services.AddScoped<ICoreAssetBookingRepository, CoreAssetBookingRepository>();
+            services.AddScoped<ICoreAssetBookingSlotRepository, CoreAssetBookingSlotRepository>();
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             services.AddScoped<IOrganizationRoleRepository, OrganizationRoleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

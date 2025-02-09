@@ -23,6 +23,7 @@ namespace Bussiness.DomainObjects
 
         public CategoryDO Category { get; set; } = default!;
         public ICollection<CoreAssetTemplateDO>? CoreAssetTemplates { get; }
+        public ICollection<CoreAssetBookingDO>? CoreAssetBookings { get; }
         public ICollection<CoreAssetCustomTemplateDO>? CoreAssetCustomTemplates { get; }
         public ICollection<CoreAssetCancellationPolicyDO>? CoreAssetCancellationPolicys { get; }
         public OrganizationDO Organization { get; set; } = default!;

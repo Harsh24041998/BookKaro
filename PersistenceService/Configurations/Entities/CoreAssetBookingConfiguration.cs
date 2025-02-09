@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PersistenceService.Configurations.Entities
 {
-    public class CoreAssetConfiguration
-        : IEntityTypeConfiguration<CoreAssetDO>
+    public class CoreAssetBookingConfiguration
+        : IEntityTypeConfiguration<CoreAssetBookingDO>
     {
         #region Methods
 
-        public void Configure(EntityTypeBuilder<CoreAssetDO> builder)
+        public void Configure(EntityTypeBuilder<CoreAssetBookingDO> builder)
         {
             // Configure table name
             builder
-                .ToTable("RefCoreAsset");
+                .ToTable("RefCoreAssetBooking");
 
             //Configure column(s)
             builder
@@ -21,33 +21,33 @@ namespace PersistenceService.Configurations.Entities
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(1);
             builder
-                .Property(e => e.OrganizationID)
+                .Property(e => e.AssetId)
                 .HasColumnType("CHAR(16)")
                 .HasColumnOrder(2);
             builder
-                .Property(e => e.CategoryID)
-                .HasColumnType("CHAR(16)")
+                .Property(e => e.Name)
+                .HasColumnType("VARCHAR(50)")
                 .HasColumnOrder(3);
             builder
-                .Property(e => e.Name)
+                .Property(e => e.PhoneNo)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnOrder(4);
             builder
-                .Property(e => e.AssetNo)
+                .Property(e => e.Amount)
                 .HasColumnType("INT")
                 .HasColumnOrder(5);
             builder
-                .Property(e => e.Priority)
+                .Property(e => e.Balance)
                 .HasColumnType("INT")
                 .HasColumnOrder(6);
             builder
-                .Property(e => e.SlotInterval)
+                .Property(e => e.Advance)
                 .HasColumnType("INT")
                 .HasColumnOrder(7);
             builder
-              .Property(e => e.IsOnline)
-              .HasColumnType("BIT")
-              .HasColumnOrder(8);
+                .Property(e => e.Status)
+                .HasColumnType("INT")
+                .HasColumnOrder(8);
             builder
                 .Property(e => e.CreatedBy)
                 .HasColumnType("VARCHAR(50)")
@@ -66,45 +66,28 @@ namespace PersistenceService.Configurations.Entities
                 .HasColumnType("DATETIME")
                 .IsRequired(false)
                 .HasColumnOrder(12);
-            builder
-              .Property(e => e.IsActive)
-              .HasColumnType("BIT")
-              .HasColumnOrder(13);
 
             //Configure primary key
             builder
                 .HasKey(e => e.Id)
-                .HasName("PK_RefCoreAsset_Id");
+                .HasName("PK_RefCoreAssetBooking_Id");
 
             //Configure index(s)
 
             //Configure foreign key(s) and relations
 
             builder
-                .HasOne(e => e.Organization)
-                .WithMany(e => e.CoreAssets)
-                .HasForeignKey(e => e.OrganizationID)
-                .HasConstraintName("FK_RefOrganization_RefCoreAsset_Id")
+                .HasMany(e => e.CoreAssetBookingSlots)
+                .WithOne(e => e.CoreAssetBooking);
+
+            builder
+                .HasOne(e => e.CoreAsset)
+                .WithMany(e => e.CoreAssetBookings)
+                .HasForeignKey(e => e.AssetId)
+                .HasConstraintName("FK_RefCoreAsset_RefCoreAssetBooking_Id")
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder
-                .HasOne(e => e.Category)
-                .WithMany(e => e.CoreAssets)
-                .HasForeignKey(e => e.CategoryID)
-                .HasConstraintName("FK_RefCategory_RefCoreAsset_Id")
-                .OnDelete(DeleteBehavior.NoAction);
 
-            builder
-                .HasMany(e => e.CoreAssetTemplates)
-                .WithOne(e => e.CoreAsset);
-
-            builder
-                .HasMany(e => e.CoreAssetBookings)
-                .WithOne(e => e.CoreAsset);
-
-            builder
-                .HasMany(e => e.CoreAssetCancellationPolicys)
-                .WithOne(e => e.CoreAsset);
         }
 
         #endregion
