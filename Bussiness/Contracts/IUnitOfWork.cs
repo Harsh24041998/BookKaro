@@ -23,6 +23,7 @@ namespace Bussiness.Contracts
         ICoreAssetCancellationPolicyRepository CoreAssetCancellationPolicyRepository { get; }
         ICoreAssetBookingRepository CoreAssetBookingRepository { get; }
         ICoreAssetBookingSlotRepository CoreAssetBookingSlotRepository { get; }
+        ICoreAssetBookingCancellationRepository CoreAssetBookingCancellationRepository { get; }
 
         #endregion
 

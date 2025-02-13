@@ -30,6 +30,7 @@ namespace PersistenceService.Configurations
         public DbSet<CoreAssetCancellationPolicyDO> CoreAssetCancellationPolicys { get; set; }
         public DbSet<CoreAssetBookingDO> CoreAssetBookings { get; set; }
         public DbSet<CoreAssetBookingSlotDO> CoreAssetBookingSlots { get; set; }
+        public DbSet<CoreAssetBookingCancellationDO> CoreAssetBookingCancellations { get; set; }
         public DbSet<OrganizationDO> Organizations { get; set; }
         public DbSet<UserDO> Users { get; set; }
 

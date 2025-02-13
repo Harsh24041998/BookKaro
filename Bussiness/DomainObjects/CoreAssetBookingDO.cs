@@ -23,6 +23,7 @@ namespace Bussiness.DomainObjects
 
         public CoreAssetDO CoreAsset { get; set; } = default!;
         public ICollection<CoreAssetBookingSlotDO>? CoreAssetBookingSlots { get; }
+        public ICollection<CoreAssetBookingCancellationDO>? CoreAssetBookingCancellations { get; }
 
         #endregion
 
