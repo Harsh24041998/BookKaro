@@ -14,7 +14,7 @@ namespace PersistenceService.Configurations.Entities
         {
             // Configure table name
             builder
-                .ToTable("RefAddress");
+                .ToTable("CoreAddress");
 
             //Configure column(s)
             builder
@@ -71,7 +71,7 @@ namespace PersistenceService.Configurations.Entities
             //Configure primary key
             builder
                 .HasKey(e => e.Id)
-                .HasName("PK_RefAddress_Id");
+                .HasName("PK_CoreAddress_Id");
 
             //Configure index(s)
 
@@ -82,7 +82,7 @@ namespace PersistenceService.Configurations.Entities
                     .HasOne(e => e.Organization)            // Organization has one Address
                     .WithOne(e => e.Address)                // Address has one Organization
                     .HasForeignKey<AddressDO>(e => e.OrganizationId)  // Specify the foreign key property in the Address class
-                    .HasConstraintName("FK_RefOrganization_RefAddress_OrganizationId")
+                    .HasConstraintName("FK_RefOrganization_CoreAddress_OrganizationId")
                     .OnDelete(DeleteBehavior.NoAction);
         }
 

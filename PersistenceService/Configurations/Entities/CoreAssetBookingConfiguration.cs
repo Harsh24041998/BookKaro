@@ -81,6 +81,10 @@ namespace PersistenceService.Configurations.Entities
                 .WithOne(e => e.CoreAssetBooking);
 
             builder
+                .HasMany(e => e.CoreAssetBookingCancellations)
+                .WithOne(e => e.CoreAssetBooking);
+
+            builder
                 .HasOne(e => e.CoreAsset)
                 .WithMany(e => e.CoreAssetBookings)
                 .HasForeignKey(e => e.AssetId)

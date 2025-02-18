@@ -68,7 +68,9 @@ namespace PersistenceService.Configurations.Entities
             //Configure relations
 
             //Configure foreign key(s) and relations
-
+            builder
+                .HasMany(e => e.OrganizationRoles)
+                .WithOne(e => e.Role);
 
         }
 

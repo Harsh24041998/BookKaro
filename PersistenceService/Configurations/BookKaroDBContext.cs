@@ -23,6 +23,7 @@ namespace PersistenceService.Configurations
         public DbSet<EnumTypeDO> EnumTypes { get; set; }
         public DbSet<EnumValueDO> EnumValues { get; set; }
         public DbSet<IndustryDO> Industries { get; set; }
+        public DbSet<AddressDO> Addresses { get; set; }
         public DbSet<CategoryDO> Categories { get; set; }
         public DbSet<CoreAssetDO> CoreAssets { get; set; }
         public DbSet<CoreAssetTemplateDO> CoreAssetTemplates { get; set; }
@@ -32,7 +33,9 @@ namespace PersistenceService.Configurations
         public DbSet<CoreAssetBookingSlotDO> CoreAssetBookingSlots { get; set; }
         public DbSet<CoreAssetBookingCancellationDO> CoreAssetBookingCancellations { get; set; }
         public DbSet<OrganizationDO> Organizations { get; set; }
+        public DbSet<OrganizationRoleDO> OrganizationRoles { get; set; }
         public DbSet<UserDO> Users { get; set; }
+        public DbSet<SubscriptionDO> Subscriptions { get; set; }
 
         #endregion
 
@@ -54,24 +57,25 @@ namespace PersistenceService.Configurations
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<RoleDO>().ToTable("RefRole",schema:"Master");
-            modelBuilder.Entity<GenderDO>().ToTable("RefGender");
-            modelBuilder.Entity<DataTypeDO>().ToTable("RefDataType");
-            modelBuilder.Entity<EnumTypeDO>().ToTable("RefEnumType");
-            modelBuilder.Entity<IndustryDO>().ToTable("RefIndustry");
-            modelBuilder.Entity<EnumValueDO>().ToTable("RefEnumValue");
-            modelBuilder.Entity<AddressDO>().ToTable("RefAddress");
-            modelBuilder.Entity<CategoryDO>().ToTable("RefCategory");
-            modelBuilder.Entity<CoreAssetDO>().ToTable("CoreAsset");
-            modelBuilder.Entity<CoreAssetTemplateDO>().ToTable("CoreAssetTemplate");
-            modelBuilder.Entity<CoreAssetCustomTemplateDO>().ToTable("CoreAssetCustomTemplate");
-            modelBuilder.Entity<CoreAssetCancellationPolicyDO>().ToTable("CoreAssetCancellationPolicy");
-            modelBuilder.Entity<CoreAssetBookingDO>().ToTable("CoreAssetBooking");
-            modelBuilder.Entity<CoreAssetBookingSlotDO>().ToTable("CoreAssetBookingSlot");
-            modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization");
-            modelBuilder.Entity<OrganizationRoleDO>().ToTable("RefOrganizationRole");
-            modelBuilder.Entity<UserDO>().ToTable("RefUser");
-            modelBuilder.Entity<SubscriptionDO>().ToTable("RefSubscription");
+            modelBuilder.Entity<RoleDO>().ToTable("RefRole",schema:"system");
+            modelBuilder.Entity<GenderDO>().ToTable("RefGender", schema: "master");
+            modelBuilder.Entity<DataTypeDO>().ToTable("RefDataType",schema:"system");
+            modelBuilder.Entity<EnumTypeDO>().ToTable("RefEnumType",schema: "system");
+            modelBuilder.Entity<IndustryDO>().ToTable("RefIndustry",schema: "system");
+            modelBuilder.Entity<EnumValueDO>().ToTable("RefEnumValue",schema: "system");
+            modelBuilder.Entity<AddressDO>().ToTable("CoreAddress", schema: "org");
+            modelBuilder.Entity<CategoryDO>().ToTable("RefCategory", schema: "system");
+            modelBuilder.Entity<CoreAssetDO>().ToTable("CoreAsset", schema: "org");
+            modelBuilder.Entity<CoreAssetTemplateDO>().ToTable("CoreAssetTemplate",schema:"org");
+            modelBuilder.Entity<CoreAssetCustomTemplateDO>().ToTable("CoreAssetCustomTemplate", schema: "org");
+            modelBuilder.Entity<CoreAssetCancellationPolicyDO>().ToTable("CoreAssetCancellationPolicy",schema:"org");
+            modelBuilder.Entity<CoreAssetBookingDO>().ToTable("CoreAssetBooking", schema: "org");
+            modelBuilder.Entity<CoreAssetBookingCancellationDO>().ToTable("CoreAssetBookingCancellation", schema: "org");
+            modelBuilder.Entity<CoreAssetBookingSlotDO>().ToTable("CoreAssetBookingSlot",schema:"org");
+            modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization", schema: "master");
+            modelBuilder.Entity<OrganizationRoleDO>().ToTable("RefOrganizationRole", schema: "dbo");
+            modelBuilder.Entity<UserDO>().ToTable("RefUser", schema: "master");
+            modelBuilder.Entity<SubscriptionDO>().ToTable("RefSubscription", schema: "master");
         }
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {

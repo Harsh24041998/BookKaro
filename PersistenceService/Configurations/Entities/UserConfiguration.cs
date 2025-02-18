@@ -81,6 +81,9 @@ namespace PersistenceService.Configurations.Entities
                 .HasConstraintName("FK_RefGender_RefUser_Id")
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder
+                .HasMany(e => e.OrganizationRoles)
+                .WithOne(e => e.User);
 
         }
 

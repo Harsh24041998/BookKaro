@@ -103,6 +103,10 @@ namespace PersistenceService.Configurations.Entities
                 .WithOne(e => e.CoreAsset);
 
             builder
+                .HasMany(e => e.CoreAssetCustomTemplates)
+                .WithOne(e => e.CoreAsset);
+
+            builder
                 .HasMany(e => e.CoreAssetCancellationPolicys)
                 .WithOne(e => e.CoreAsset);
         }

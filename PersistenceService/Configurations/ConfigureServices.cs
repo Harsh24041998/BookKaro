@@ -16,7 +16,7 @@ namespace PersistenceService.Configurations
         public static IServiceCollection InjectPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<BookKaroDBContext>(options =>
-            options.UseSqlServer(configuration["DatabaseConfig:xyz:abc"]));
+            options.UseSqlServer(configuration["DatabaseConfig:BIndia:BookKaroDbConnectionString"]));
 
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();

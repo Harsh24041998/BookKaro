@@ -74,6 +74,14 @@ namespace PersistenceService.Configurations.Entities
             builder
                 .HasMany(e => e.CoreAssets)
                 .WithOne(e => e.Organization);
+
+            builder
+                .HasOne(e => e.Address)
+                .WithOne(e => e.Organization);
+
+            builder
+                .HasMany(e => e.OrganizationRoles)
+                .WithOne(e => e.Organization);
         }
 
         #endregion
