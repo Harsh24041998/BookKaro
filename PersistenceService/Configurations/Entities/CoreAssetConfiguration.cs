@@ -109,6 +109,10 @@ namespace PersistenceService.Configurations.Entities
             builder
                 .HasMany(e => e.CoreAssetCancellationPolicys)
                 .WithOne(e => e.CoreAsset);
+
+            builder
+                .HasMany(e => e.CoreAssetSubscriptions)
+                .WithOne(e => e.CoreAsset);
         }
 
         #endregion

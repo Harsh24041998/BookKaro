@@ -29,6 +29,7 @@ namespace PersistenceService.Configurations
         private ICoreAssetBookingRepository? _coreAssetBookingRepository;
         private ICoreAssetBookingSlotRepository? _coreAssetBookingSlotRepository;
         private ICoreAssetBookingCancellationRepository? _coreAssetBookingCancellationRepository;
+        private ICoreAssetSubscriptionRepository? _coreAssetSubscriptionRepository;
         #endregion
 
         #region Properties
@@ -247,6 +248,17 @@ namespace PersistenceService.Configurations
                     _coreAssetBookingCancellationRepository = new CoreAssetBookingCancellationRepository(_bookKaroDBContext, true) as ICoreAssetBookingCancellationRepository;
                 }
                 return _coreAssetBookingCancellationRepository!;
+            }
+        }
+        public ICoreAssetSubscriptionRepository CoreAssetSubscriptionRepository
+        {
+            get
+            {
+                if (_coreAssetSubscriptionRepository == null)
+                {
+                    _coreAssetSubscriptionRepository = new CoreAssetSubscriptionRepository(_bookKaroDBContext, true) as ICoreAssetSubscriptionRepository;
+                }
+                return _coreAssetSubscriptionRepository!;
             }
         }
 

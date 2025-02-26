@@ -36,6 +36,7 @@ namespace PersistenceService.Configurations
         public DbSet<OrganizationRoleDO> OrganizationRoles { get; set; }
         public DbSet<UserDO> Users { get; set; }
         public DbSet<SubscriptionDO> Subscriptions { get; set; }
+        public DbSet<CoreAssetSubscriptionDO> CoreAssetSubscriptions { get; set; }
 
         #endregion
 
@@ -72,6 +73,7 @@ namespace PersistenceService.Configurations
             modelBuilder.Entity<CoreAssetBookingDO>().ToTable("CoreAssetBooking", schema: "org");
             modelBuilder.Entity<CoreAssetBookingCancellationDO>().ToTable("CoreAssetBookingCancellation", schema: "org");
             modelBuilder.Entity<CoreAssetBookingSlotDO>().ToTable("CoreAssetBookingSlot",schema:"org");
+            modelBuilder.Entity<CoreAssetSubscriptionDO>().ToTable("CoreAssetSubscription", schema: "org");
             modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization", schema: "master");
             modelBuilder.Entity<OrganizationRoleDO>().ToTable("RefOrganizationRole", schema: "dbo");
             modelBuilder.Entity<UserDO>().ToTable("RefUser", schema: "master");

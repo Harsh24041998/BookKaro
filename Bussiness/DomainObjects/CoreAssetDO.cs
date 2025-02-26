@@ -26,6 +26,7 @@ namespace Bussiness.DomainObjects
         public ICollection<CoreAssetBookingDO>? CoreAssetBookings { get; }
         public ICollection<CoreAssetCustomTemplateDO>? CoreAssetCustomTemplates { get; }
         public ICollection<CoreAssetCancellationPolicyDO>? CoreAssetCancellationPolicys { get; }
+        public ICollection<CoreAssetSubscriptionDO>? CoreAssetSubscriptions { get; }
         public OrganizationDO Organization { get; set; } = default!;
 
         #endregion
