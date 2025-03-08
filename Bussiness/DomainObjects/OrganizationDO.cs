@@ -21,6 +21,7 @@ namespace Bussiness.DomainObjects
         public ICollection<OrganizationRoleDO>? OrganizationRoles { get; }
         public ICollection<CoreAssetDO>? CoreAssets { get; }
         public AddressDO Address { get; set; } = default!;
+        public ICollection<TransactionDO>? Transactions { get; }
         #endregion
 
         #endregion

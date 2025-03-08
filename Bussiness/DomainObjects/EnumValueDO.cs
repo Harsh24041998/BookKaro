@@ -1,9 +1,4 @@
 ﻿using Bussiness.DomainObjects.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bussiness.DomainObjects
 {
@@ -25,6 +20,7 @@ namespace Bussiness.DomainObjects
 
         public EnumTypeDO EnumType { get; set; } = default!;
         public ICollection<CoreAssetTemplateDO>? CoreAssetTemplates { get; }
+        public ICollection<TransactionDO>? Transactions { get; }
 
         #endregion
 
