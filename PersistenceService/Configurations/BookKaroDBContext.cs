@@ -24,6 +24,7 @@ namespace PersistenceService.Configurations
         public DbSet<EnumValueDO> EnumValues { get; set; }
         public DbSet<IndustryDO> Industries { get; set; }
         public DbSet<AddressDO> Addresses { get; set; }
+        public DbSet<TransactionDO> Transactions { get; set; }
         public DbSet<CategoryDO> Categories { get; set; }
         public DbSet<CoreAssetDO> CoreAssets { get; set; }
         public DbSet<CoreAssetTemplateDO> CoreAssetTemplates { get; set; }
@@ -78,6 +79,7 @@ namespace PersistenceService.Configurations
             modelBuilder.Entity<OrganizationRoleDO>().ToTable("RefOrganizationRole", schema: "dbo");
             modelBuilder.Entity<UserDO>().ToTable("RefUser", schema: "master");
             modelBuilder.Entity<SubscriptionDO>().ToTable("RefSubscription", schema: "master");
+            modelBuilder.Entity<TransactionDO>().ToTable("CoreTransaction", schema: "org");
         }
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {

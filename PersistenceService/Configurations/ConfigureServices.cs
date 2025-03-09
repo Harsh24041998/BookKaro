@@ -40,6 +40,7 @@ namespace PersistenceService.Configurations
             services.AddScoped<ICoreAssetSubscriptionRepository, CoreAssetSubscriptionRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             return services;
         }
