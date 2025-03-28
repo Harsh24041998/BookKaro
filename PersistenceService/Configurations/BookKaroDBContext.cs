@@ -2,6 +2,7 @@
 using Bussiness.DomainObjects;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Bussiness.DomainObjects.Common;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace PersistenceService.Configurations
 {
@@ -43,6 +44,14 @@ namespace PersistenceService.Configurations
 
 
         #region Methods
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.ConfigureWarnings(warnings =>
+                warnings.Ignore(RelationalEventId.PendingModelChangesWarning)
+            );
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder options)
         //{
         //    //var configuration = new ConfigurationBuilder()
@@ -59,21 +68,21 @@ namespace PersistenceService.Configurations
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<RoleDO>().ToTable("RefRole",schema:"system");
+            modelBuilder.Entity<RoleDO>().ToTable("RefRole", schema: "system");
             modelBuilder.Entity<GenderDO>().ToTable("RefGender", schema: "master");
-            modelBuilder.Entity<DataTypeDO>().ToTable("RefDataType",schema:"system");
-            modelBuilder.Entity<EnumTypeDO>().ToTable("RefEnumType",schema: "system");
-            modelBuilder.Entity<IndustryDO>().ToTable("RefIndustry",schema: "system");
-            modelBuilder.Entity<EnumValueDO>().ToTable("RefEnumValue",schema: "system");
+            modelBuilder.Entity<DataTypeDO>().ToTable("RefDataType", schema: "system");
+            modelBuilder.Entity<EnumTypeDO>().ToTable("RefEnumType", schema: "system");
+            modelBuilder.Entity<IndustryDO>().ToTable("RefIndustry", schema: "system");
+            modelBuilder.Entity<EnumValueDO>().ToTable("RefEnumValue", schema: "system");
             modelBuilder.Entity<AddressDO>().ToTable("CoreAddress", schema: "org");
             modelBuilder.Entity<CategoryDO>().ToTable("RefCategory", schema: "system");
             modelBuilder.Entity<CoreAssetDO>().ToTable("CoreAsset", schema: "org");
-            modelBuilder.Entity<CoreAssetTemplateDO>().ToTable("CoreAssetTemplate",schema:"org");
+            modelBuilder.Entity<CoreAssetTemplateDO>().ToTable("CoreAssetTemplate", schema: "org");
             modelBuilder.Entity<CoreAssetCustomTemplateDO>().ToTable("CoreAssetCustomTemplate", schema: "org");
-            modelBuilder.Entity<CoreAssetCancellationPolicyDO>().ToTable("CoreAssetCancellationPolicy",schema:"org");
+            modelBuilder.Entity<CoreAssetCancellationPolicyDO>().ToTable("CoreAssetCancellationPolicy", schema: "org");
             modelBuilder.Entity<CoreAssetBookingDO>().ToTable("CoreAssetBooking", schema: "org");
             modelBuilder.Entity<CoreAssetBookingCancellationDO>().ToTable("CoreAssetBookingCancellation", schema: "org");
-            modelBuilder.Entity<CoreAssetBookingSlotDO>().ToTable("CoreAssetBookingSlot",schema:"org");
+            modelBuilder.Entity<CoreAssetBookingSlotDO>().ToTable("CoreAssetBookingSlot", schema: "org");
             modelBuilder.Entity<CoreAssetSubscriptionDO>().ToTable("CoreAssetSubscription", schema: "org");
             modelBuilder.Entity<OrganizationDO>().ToTable("RefOrganization", schema: "master");
             modelBuilder.Entity<OrganizationRoleDO>().ToTable("RefOrganizationRole", schema: "dbo");

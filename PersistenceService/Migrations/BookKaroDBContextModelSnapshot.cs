@@ -958,7 +958,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.OrganizationDO", "Organization")
                         .WithOne("Address")
                         .HasForeignKey("Bussiness.DomainObjects.AddressDO", "OrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Organization");
@@ -969,7 +969,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.IndustryDO", "Industry")
                         .WithMany("Categories")
                         .HasForeignKey("IndustryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Industry");
@@ -980,7 +980,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetBookingDO", "CoreAssetBooking")
                         .WithMany("CoreAssetBookingCancellations")
                         .HasForeignKey("CoreAssetBookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAssetBooking");
@@ -991,7 +991,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetDO", "CoreAsset")
                         .WithMany("CoreAssetBookings")
                         .HasForeignKey("CoreAssetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAsset");
@@ -1002,7 +1002,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetBookingDO", "CoreAssetBooking")
                         .WithMany("CoreAssetBookingSlots")
                         .HasForeignKey("CoreAssetBookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAssetBooking");
@@ -1013,7 +1013,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetDO", "CoreAsset")
                         .WithMany("CoreAssetCancellationPolicys")
                         .HasForeignKey("CoreAssetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAsset");
@@ -1024,7 +1024,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetDO", "CoreAsset")
                         .WithMany("CoreAssetCustomTemplates")
                         .HasForeignKey("CoreAssetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAsset");
@@ -1035,13 +1035,13 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CategoryDO", "Category")
                         .WithMany("CoreAssets")
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Bussiness.DomainObjects.OrganizationDO", "Organization")
                         .WithMany("CoreAssets")
                         .HasForeignKey("OrganizationID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -1054,7 +1054,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetDO", "CoreAsset")
                         .WithMany("CoreAssetSubscriptions")
                         .HasForeignKey("CoreAssetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAsset");
@@ -1065,13 +1065,13 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.CoreAssetDO", "CoreAsset")
                         .WithMany("CoreAssetTemplates")
                         .HasForeignKey("CoreAssetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Bussiness.DomainObjects.EnumValueDO", "EnumValue")
                         .WithMany("CoreAssetTemplates")
                         .HasForeignKey("EnumValueId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CoreAsset");
@@ -1084,7 +1084,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.EnumTypeDO", "EnumType")
                         .WithOne("EnumValue")
                         .HasForeignKey("Bussiness.DomainObjects.EnumValueDO", "EnumTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("EnumType");
@@ -1095,7 +1095,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.IndustryDO", "Industry")
                         .WithMany("Organizations")
                         .HasForeignKey("IndustryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Industry");
@@ -1106,19 +1106,19 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.OrganizationDO", "Organization")
                         .WithMany("OrganizationRoles")
                         .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Bussiness.DomainObjects.RoleDO", "Role")
                         .WithMany("OrganizationRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Bussiness.DomainObjects.UserDO", "User")
                         .WithMany("OrganizationRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Organization");
@@ -1133,13 +1133,13 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.EnumValueDO", "EnumValue")
                         .WithMany("Transactions")
                         .HasForeignKey("EnumValueId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Bussiness.DomainObjects.OrganizationDO", "Organization")
                         .WithMany("Transactions")
                         .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("EnumValue");
@@ -1152,7 +1152,7 @@ namespace PersistenceService.Migrations
                     b.HasOne("Bussiness.DomainObjects.GenderDO", "Gender")
                         .WithMany("Users")
                         .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Gender");

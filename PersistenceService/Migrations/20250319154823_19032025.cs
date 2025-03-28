@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PersistenceService.Migrations
 {
     /// <inheritdoc />
-    public partial class _17032025 : Migration
+    public partial class _19032025 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

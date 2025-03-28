@@ -12,8 +12,8 @@ using PersistenceService.Configurations;
 namespace PersistenceService.Migrations
 {
     [DbContext(typeof(BookKaroDBContext))]
-    [Migration("20250317150017_17032025")]
-    partial class _17032025
+    [Migration("20250319154823_19032025")]
+    partial class _19032025
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
